@@ -1,0 +1,14 @@
+.modal {
+    position: absolute;
+    top:50%;
+    left:50%;
+  
+    width: 720px;
+    height: 480px;
+    overflow: hidden;
+  
+    background-color: #1C1C21;
+    z-index: 200;
+    
+    transform:translate(-50%, -50%);
+  }

@@ -1,0 +1,23 @@
+.wrapper {
+  position: relative;
+  width: 1240px;
+  height: 100%;
+  margin: 0 auto;
+}
+.app {
+  background-color: #FFFFFF;
+  position: relative;
+  text-align: center;
+}
+.title {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 40px;
+  font-weight: bold;
+}
+.main {
+  height: calc(100vh - 140px);
+}
+.footer {
+  height: 20px;
+  text-align: left;
+}

@@ -1,0 +1,20 @@
+.table {
+  position: absolute;
+  background-color: #FFFFFF;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.zero_field {
+  float: left;
+}
+.horizontal_legend {
+  float: left;
+}
+.new_line {
+  clear: both;
+}
+.board {
+  float: left;
+}
