@@ -11,6 +11,23 @@ function clearBoardInLocalStorage() {
   localStorage.removeItem('picrossBoard');
 }
 
+function saveTaskToLocalStorage(board) {
+  localStorage.setItem('picrossTask', JSON.stringify(board));
+}
+
+function loadTaskFromLocalStorage() {
+  const board = localStorage.getItem('picrossTask');
+  return board ? JSON.parse(board) : null;
+}
+
+function clearTaskInLocalStorage() {
+  localStorage.removeItem('picrossTask');
+}
+
 export {  saveBoardToLocalStorage,
           loadBoardFromLocalStorage,
-          clearBoardInLocalStorage}
+          clearBoardInLocalStorage,
+          saveTaskToLocalStorage,
+          loadTaskFromLocalStorage,
+          clearTaskInLocalStorage
+        }
