@@ -6,7 +6,7 @@ import {  saveBoardToLocalStorage,
 
 import BoardStyles from "./board.module.css";
 
-const Board = ({ width, height, task }) => {
+const Board = ({ width, height, checkWin }) => {
   const [board, setBoard] = useState([]);
 
   useEffect(() => {
@@ -14,11 +14,7 @@ const Board = ({ width, height, task }) => {
   }, []);
 
   useEffect(() => {
-    console.log('checkWin')
-    if (checkWin()) {
-      
-      console.log ('Вы разгадали кроссворд!');
-    }
+    checkWin(board);
   }, [board]);
 
   const boardClickHandler = (e) => {
@@ -63,22 +59,6 @@ const Board = ({ width, height, task }) => {
 
     setBoard(newBoard);
   };
-
-  function checkWin () {
-    if (board.length === 0) {
-      return false;
-    }
-        
-    for (let i = 0; i < board.length; i++) {
-      const content = board[i].content === 'X' ? '0' : board[i].content;
-
-      if (content !== task[i]) {
-        return false;
-      }
-    }
-
-    return true;
-  }
 
   return (
     <>

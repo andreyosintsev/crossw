@@ -6,10 +6,13 @@ import LegendHorizontal from '../legend-horizontal/legend-horizontal';
 import LegendVertical from '../legend-vertical/legend-vertical';
 import Modal from '../modal/modal';
 
+import { clearBoardInLocalStorage } from '../../utils/local-storage';
+
 import TableStyles from './table.module.css';
 
 const Table = ({task}) => {
-  const [modalShow, setModalShow] = useState(true);
+  const [modalShow, setModalShow] = useState(false);
+  const [isWin, setWin] = useState(false);
   const [horizontalLegend, setHorizontalLegend] = useState(null);
   const [verticalLegend, setVerticalLegend] = useState(null);
 
@@ -115,13 +118,40 @@ const Table = ({task}) => {
     };
   };
 
+  function checkWin (board) {
+    if (board.length === 0) {
+      setWin(false);
+      return;
+    }
+        
+    for (let i = 0; i < board.length; i++) {
+      const content = board[i].content === 'X' ? '0' : board[i].content;
+
+      if (content !== task.task[i]) {
+        setWin(false);
+        return;
+      }
+    }
+
+    setWin(true);
+  }
+
+  useEffect(()=>{
+    if (isWin) {
+      clearBoardInLocalStorage();
+      setModalShow(true);
+    }
+  }, [isWin]);
+
   useEffect(()=>{
     setHorizontalLegend(createHorizontalLegend(task));
     setVerticalLegend(createVerticalLegend(task));
   }, []);
 
   const closeHandler = (e) => {
+    e.preventDefault();
     setModalShow(false);
+    setWin(false);
   };
 
   return (
@@ -146,9 +176,10 @@ const Table = ({task}) => {
           width={task.width} 
           height={task.height} 
           task={task.task}
+          checkWin={checkWin}
         />
       </div>
-      {modalShow && <Modal onClick={closeHandler}></Modal>}
+      {modalShow && <Modal image="modal1.png" onClick={closeHandler}>Поздравляем, вы разгадали кроссворд!</Modal>}
     </>
   )
 };

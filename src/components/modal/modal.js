@@ -4,7 +4,7 @@ import ModalBackdrop from '../modal-backdrop/modal-backdrop';
 
 import ModalStyles from './modal.module.css';
 
-const Modal = ({onClick, children}) => {
+const Modal = ({title, image, onClick, children}) => {
 
   const modalRoot = document.querySelector("#modals");
 
@@ -12,8 +12,12 @@ const Modal = ({onClick, children}) => {
     (
       <>
         <ModalBackdrop onClick={onClick} />
-        <div className={`${ModalStyles.modal}`} onClick={onClick} >
-          {children}
+        <div className={`${ModalStyles.modal}`} onClick={e => e.stopPropagation()}>
+          <img src={`/imgs/${image}`} alt="picword"/>
+          <p>{children}</p>
+          <div className={ModalStyles.button}>
+            <button onClick={onClick}>Закрыть</button>
+          </div>
         </div>
       </>
     ), 
