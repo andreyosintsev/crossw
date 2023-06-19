@@ -6,15 +6,18 @@ import LegendHorizontal from '../legend-horizontal/legend-horizontal';
 import LegendVertical from '../legend-vertical/legend-vertical';
 import Modal from '../modal/modal';
 
-import { clearBoardInLocalStorage } from '../../utils/local-storage';
+import {  loadTaskFromLocalStorage,
+          clearBoardInLocalStorage } from '../../utils/local-storage';
 
 import TableStyles from './table.module.css';
 
-const Table = ({task}) => {
+const Table = () => {
   const [modalShow, setModalShow] = useState(false);
   const [isWin, setWin] = useState(false);
   const [horizontalLegend, setHorizontalLegend] = useState(null);
   const [verticalLegend, setVerticalLegend] = useState(null);
+
+  const [task, setTask] = useState(null);
 
   const createHorizontalLegend = (task) => {
     let legend = [];
@@ -144,6 +147,8 @@ const Table = ({task}) => {
   }, [isWin]);
 
   useEffect(()=>{
+    const task = loadTaskFromLocalStorage();
+    setTask(task);
     setHorizontalLegend(createHorizontalLegend(task));
     setVerticalLegend(createVerticalLegend(task));
   }, []);

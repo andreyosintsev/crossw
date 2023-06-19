@@ -1,5 +1,3 @@
-import { saveTaskToLocalStorage } from './local-storage';
-
 export const API = 'http://localhost/api/api.php';
 
 const checkFetchResponse = (res) => {
@@ -20,22 +18,6 @@ const request = (endpoint, options) => {
     .then(checkSuccess);
 };
 
-const loadTask = () => {
-  try {  
-    request('/')
-    .then(data=> {
-      console.log(data);
-      saveTaskToLocalStorage(data);
-    })
-    .catch((error) => {
-      console.error (`Ошибка Promise: ${error}`);
-    });
-  } catch (error) {
-    console.error((`Не удалось получить task от API: ${error.message}`));
-    throw new Error(`Не удалось получить task от API: ${error.message}`);
-  }
-};
-
 export {
-    loadTask
+  request
 }
