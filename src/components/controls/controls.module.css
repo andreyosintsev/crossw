@@ -1,0 +1,18 @@
+.controls {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  gap: 20px
+}
+
+button {
+  width: 150px;
+}
+
+.restart {
+  background-color: lightcoral;
+}
+
+.tip {
+  background-color: lightblue;
+}

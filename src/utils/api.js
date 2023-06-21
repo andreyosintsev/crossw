@@ -1,4 +1,4 @@
-export const API = 'http://localhost/api/api.php';
+export const API = '/api/api.php';
 
 const checkFetchResponse = (res) => {
   return res.ok 

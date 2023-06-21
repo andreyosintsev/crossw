@@ -5,6 +5,7 @@ import Board from '../board/board';
 import LegendHorizontal from '../legend-horizontal/legend-horizontal';
 import LegendVertical from '../legend-vertical/legend-vertical';
 import Modal from '../modal/modal';
+import ModalButton from '../modal-button/modal-button';
 
 import {  loadTaskFromLocalStorage,
           clearBoardInLocalStorage } from '../../utils/local-storage';
@@ -184,7 +185,10 @@ const Table = () => {
           checkWin={checkWin}
         />
       </div>
-      {modalShow && <Modal image="modal1.png" onClick={closeHandler}>Поздравляем, вы разгадали кроссворд!</Modal>}
+      {modalShow 
+      &&  <Modal image="modal1.png" title="Поздравляем, вы разгадали кроссворд!" onClick={closeHandler}>
+            <ModalButton onClick={closeHandler}>Закрыть</ModalButton>
+          </Modal>}
     </>
   )
 };

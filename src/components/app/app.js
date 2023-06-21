@@ -2,12 +2,17 @@ import { useState, useEffect } from 'react';
 
 import AppStyles from './app.module.css';
 
-import Table from '../table/table';
 import Modal from '../modal/modal';
 import Preloader from '../preloader/preloader';
+import Panel from '../panel/panel';
+import Table from '../table/table';
+import Controls from '../controls/controls';
 
 import { request } from '../../utils/api';
-import { loadTaskFromLocalStorage, saveTaskToLocalStorage } from '../../utils/local-storage';
+import {  loadTaskFromLocalStorage, 
+          saveTaskToLocalStorage,
+          clearTaskInLocalStorage,
+          clearBoardInLocalStorage } from '../../utils/local-storage';
 
 function App() {
   const [loading, setLoading] = useState(
@@ -18,6 +23,7 @@ function App() {
     }
   );
   const [modalShow, setModalShow] = useState(false);
+  const [isRestart, setRestart] = useState(false);
 
   const closeHandler = (e) => {
     e.preventDefault();
@@ -28,6 +34,24 @@ function App() {
 
   const loadTask = () => {
     console.log('In loadTask');
+    //////////////////////////////////////////////////////////////////
+    // const data = {    
+    //   "task": [
+    //     "0", "0", "1", "0", "0", "0", "0", "1", "0",
+    //     "0", "1", "0", "1", "0", "0", "1", "0", "1",
+    //     "1", "1", "1", "1", "1", "0", "1", "0", "1",
+    //     "1", "0", "0", "0", "1", "0", "0", "1", "0",
+    //     "1", "0", "0", "0", "1", "0", "0", "1", "0",
+    //     "1", "1", "1", "1", "1", "0", "0", "1", "0"
+    //   ],
+    //   "width": 9,
+    //   "height": 6,
+    //   "success": "true"
+    // };
+
+    // saveTaskToLocalStorage(data);
+    // setLoading({ isLoading: false, hasError: false, isLoaded: true });
+    //////////////////////////////////////////////////////////////////
     try {  
       request('/'
       )
@@ -50,24 +74,39 @@ function App() {
       setLoading({ isLoading: false, hasError: true, isLoaded: false});
       setModalShow(true);
     }
+    //////////////////////////////////////////////////////////////////
+  };
+
+  const restartHandler = (e) => {
+    e.preventDefault();
+    clearBoardInLocalStorage();
+    clearTaskInLocalStorage();
+    setLoading({ isLoading: true, hasError: false, isLoaded: true });
+    loadTask();  
+    setRestart(true);
   };
 
   useEffect(()=> {
+    console.log('APP REDRAW!!');
     if (!loadTaskFromLocalStorage()) {
       setLoading({ isLoading: true, hasError: false, isLoaded: true });
       loadTask();
     } else {
       setLoading({ isLoading: false, hasError: false, isLoaded: true });
     }
-  }, []);
+    setRestart(false);
+  }, [isRestart]);
 
   return (
       <div className={AppStyles.wrapper}>
         <div className={AppStyles.app}>
-          <h1 className={AppStyles.title}>Picross game</h1>
+          <h1 className={AppStyles.title}>Японские кроссворды</h1>
           <main className={AppStyles.main}>
           {!loading.isLoading && !loading.hasError && 
-            <Table/>
+            <Panel>
+              <Table />
+              <Controls onRestart={restartHandler}/>
+            </Panel>
           }
           {loading.isLoading && 
             <Preloader />          
@@ -77,11 +116,11 @@ function App() {
           }
           </main>
           <footer className={AppStyles.footer}>
-            &copy;2023 Picross World
+            &copy;2023 crossw.ru - Японские кроссворды
           </footer>
         </div>
       </div>
   );
 }
 
-export default App;
+export default App

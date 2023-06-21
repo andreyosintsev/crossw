@@ -1,27 +1,29 @@
 function saveBoardToLocalStorage(board) {
-  localStorage.setItem('picrossBoard', JSON.stringify(board));
+  localStorage.setItem('crosswBoard', JSON.stringify(board));
 }
 
 function loadBoardFromLocalStorage() {
-  const board = localStorage.getItem('picrossBoard');
+  const board = localStorage.getItem('crosswBoard');
   return board ? JSON.parse(board) : null;
 }
 
 function clearBoardInLocalStorage() {
-  localStorage.removeItem('picrossBoard');
+  console.log('clearBoard');
+  localStorage.removeItem('crosswBoard');
 }
 
 function saveTaskToLocalStorage(board) {
-  localStorage.setItem('picrossTask', JSON.stringify(board));
+  localStorage.setItem('crosswTask', JSON.stringify(board));
 }
 
 function loadTaskFromLocalStorage() {
-  const board = localStorage.getItem('picrossTask');
+  const board = localStorage.getItem('crosswTask');
   return board ? JSON.parse(board) : null;
 }
 
 function clearTaskInLocalStorage() {
-  localStorage.removeItem('picrossTask');
+  console.log('clearTask');
+  localStorage.removeItem('crosswTask');
 }
 
 export {  saveBoardToLocalStorage,

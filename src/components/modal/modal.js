@@ -5,7 +5,6 @@ import ModalBackdrop from '../modal-backdrop/modal-backdrop';
 import ModalStyles from './modal.module.css';
 
 const Modal = ({title, image, onClick, children}) => {
-
   const modalRoot = document.querySelector("#modals");
 
   return ReactDOM.createPortal(
@@ -14,9 +13,9 @@ const Modal = ({title, image, onClick, children}) => {
         <ModalBackdrop onClick={onClick} />
         <div className={`${ModalStyles.modal}`} onClick={e => e.stopPropagation()}>
           <img src={`/imgs/${image}`} alt="picword"/>
-          <p>{children}</p>
-          <div className={ModalStyles.button}>
-            <button onClick={onClick}>Закрыть</button>
+          <p>{title}</p>
+          <div className={`${ModalStyles.buttons}`}>
+            {children}
           </div>
         </div>
       </>

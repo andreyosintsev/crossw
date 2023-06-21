@@ -6,12 +6,13 @@ import {  saveBoardToLocalStorage,
 
 import BoardStyles from "./board.module.css";
 
-const Board = ({ width, height, checkWin }) => {
+const Board = (props) => {
+  const { width, height, checkWin } = props;
   const [board, setBoard] = useState([]);
 
   useEffect(() => {
     initBoard();
-  }, []);
+  }, [props]);
 
   useEffect(() => {
     checkWin(board);
@@ -43,6 +44,7 @@ const Board = ({ width, height, checkWin }) => {
   };
 
   const initBoard = () => {
+    console.log('initBoard');
     const newBoard = loadBoardFromLocalStorage() || [];
 
     if (newBoard.length === 0) {
@@ -63,7 +65,6 @@ const Board = ({ width, height, checkWin }) => {
   return (
     <>
     <div
-      key='board'
       className={BoardStyles.board}
       onMouseDown={boardClickHandler}
       onContextMenu={(e) => {
@@ -86,7 +87,7 @@ const Board = ({ width, height, checkWin }) => {
             && (i % width === 0) 
             && <div key={`bn${i}`} className={BoardStyles.newLine}></div>}  
             <BoardElement
-              key     = {`b${i}`}
+              key={`be${i}`}
               xCoord  = {item.xCoord}
               yCoord  = {item.yCoord}
               content = {content}

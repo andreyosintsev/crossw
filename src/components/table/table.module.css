@@ -1,10 +1,7 @@
 .table {
-  position: absolute;
+  display: inline-block;
   background-color: #FFFFFF;
-  text-align: center;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  margin-bottom: 20px;
 }
 .zero_field {
   float: left;

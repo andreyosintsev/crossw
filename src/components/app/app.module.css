@@ -10,9 +10,10 @@
   text-align: center;
 }
 .title {
-  font-family: 'Courier New', Courier, monospace;
+  font-family: Arial, Tahoma, sans-serif;
   font-size: 40px;
   font-weight: bold;
+  text-align: left;
 }
 .main {
   height: calc(100vh - 140px);
