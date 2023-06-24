@@ -6,7 +6,7 @@ This project was bootstrapped with [Create React App] and written in React.
 
 2023/24/06
 BOARD:
-- Hints for the current table are implemented. Now you can press "Hint" to pain one valid cell.
+- Hints for the current table are implemented. Now you can press "Hint" to fill one valid cell.
 
 WEBSITE:
 - Some layout changes, the beginning of responsive layout.
