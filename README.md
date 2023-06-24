@@ -4,6 +4,14 @@ This project was bootstrapped with [Create React App] and written in React.
 
 ## Updates history
 
+2023/24/06
+BOARD:
+- Hints for the current table are implemented. Now you can press "Hint" to pain one valid cell.
+
+WEBSITE:
+- Some layout changes, the beginning of responsive layout.
+- Some design changes.
+
 2023/20/06
 PROJECT:
 - The project has been renamed to "Crossw" due to copyright restrictions.
