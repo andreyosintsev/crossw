@@ -12,7 +12,7 @@ import {  loadTaskFromLocalStorage,
 
 import TableStyles from './table.module.css';
 
-const Table = () => {
+const Table = ({help}) => {
   const [modalShow, setModalShow] = useState(false);
   const [isWin, setWin] = useState(false);
   const [horizontalLegend, setHorizontalLegend] = useState(null);
@@ -160,10 +160,11 @@ const Table = () => {
     setWin(false);
   };
 
+
   return (
     horizontalLegend && verticalLegend &&
     <>
-      <div className={TableStyles.table}>
+      <div className={TableStyles.table} style={{minWidth: `${((verticalLegend.width+task.width)*25+4)}px`}}>
         <BoardZeroField 
           className={TableStyles.zero_field}
           width={verticalLegend.width} 
@@ -183,6 +184,7 @@ const Table = () => {
           height={task.height} 
           task={task.task}
           checkWin={checkWin}
+          help={help}
         />
       </div>
       {modalShow 

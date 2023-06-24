@@ -5,7 +5,7 @@ import ModalButton from '../modal-button/modal-button';
 
 import ControlsStyles from './controls.module.css';
 
-const Controls = ({onRestart}) => {
+const Controls = ({onRestart, onHelp}) => {
   const [modalShow, setModalShow] = useState(false);
 
   const restartHandler = (e) => {
@@ -15,11 +15,10 @@ const Controls = ({onRestart}) => {
 
   const tipHandler = (e) => {
     e.preventDefault();
-
+    onHelp();
   };
 
   const dialogRestartHandler = (e) => {
-    // e.preventDefault();
     setModalShow(false);
     onRestart(e);
   };

@@ -24,6 +24,7 @@ function App() {
   );
   const [modalShow, setModalShow] = useState(false);
   const [isRestart, setRestart] = useState(false);
+  const [isHelp, setHelp] = useState(false);
 
   const closeHandler = (e) => {
     e.preventDefault();
@@ -81,9 +82,29 @@ function App() {
     e.preventDefault();
     clearBoardInLocalStorage();
     clearTaskInLocalStorage();
+    setHelp(false);
     setLoading({ isLoading: true, hasError: false, isLoaded: true });
     loadTask();  
     setRestart(true);
+  };
+
+  const helpHandler = () => {
+    const data = loadTaskFromLocalStorage();
+    let help = {};
+    let pos = 0;
+    if (data && data.task) {
+      while (true) {
+        pos = Math.floor(Math.random() * data.task.length);
+        if (data.task[pos] === "1") { 
+          break;
+        }
+      }
+      help.content = data.task[pos];
+      help.pos = pos;
+    } else {
+      help = false;
+    }
+    setHelp(help);
   };
 
   useEffect(()=> {
@@ -104,8 +125,8 @@ function App() {
           <main className={AppStyles.main}>
           {!loading.isLoading && !loading.hasError && 
             <Panel>
-              <Table />
-              <Controls onRestart={restartHandler}/>
+              <Table help={isHelp}/>
+              <Controls onRestart={restartHandler} onHelp={helpHandler}/>
             </Panel>
           }
           {loading.isLoading && 

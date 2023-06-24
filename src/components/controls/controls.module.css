@@ -7,6 +7,9 @@
 
 button {
   width: 150px;
+  height: 30px;
+  font-size: 14px;
+  color: #000000;
 }
 
 .restart {
@@ -15,4 +18,12 @@ button {
 
 .tip {
   background-color: lightblue;
+}
+
+@media screen and (width < 800px) {
+
+}
+
+@media screen and (width < 576px) {
+
 }

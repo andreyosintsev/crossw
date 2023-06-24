@@ -7,11 +7,11 @@ import {  saveBoardToLocalStorage,
 import BoardStyles from "./board.module.css";
 
 const Board = (props) => {
-  const { width, height, checkWin } = props;
+  const { width, height, checkWin, help } = props;
   const [board, setBoard] = useState([]);
 
   useEffect(() => {
-    initBoard();
+    initBoard(help);
   }, [props]);
 
   useEffect(() => {
@@ -43,8 +43,9 @@ const Board = (props) => {
     saveBoardToLocalStorage(newBoard);
   };
 
-  const initBoard = () => {
+  const initBoard = (help) => {
     console.log('initBoard');
+    console.log('help', help);
     const newBoard = loadBoardFromLocalStorage() || [];
 
     if (newBoard.length === 0) {
@@ -57,9 +58,23 @@ const Board = (props) => {
           });
         }
       }
+    } else {
+
+      if (help) {
+        console.log(help);
+        console.log('xCoord: ', help.pos % width);
+        console.log('yCoord: ', Math.floor(help.pos/width));
+        console.log('content: ', help.content);
+
+        newBoard[help.pos].xCoord = help.pos % width;
+        newBoard[help.pos].yCoord = Math.floor(help.pos/width);
+        newBoard[help.pos].content = '' + help.content;
+      }
+
     }
 
     setBoard(newBoard);
+    saveBoardToLocalStorage(newBoard);
   };
 
   return (

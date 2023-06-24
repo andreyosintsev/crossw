@@ -1,8 +1,9 @@
 .wrapper {
   position: relative;
-  width: 1240px;
+  max-width: 1240px;
   height: 100%;
   margin: 0 auto;
+  background-color: #FFFFFF;
 }
 .app {
   background-color: #FFFFFF;
@@ -20,5 +21,22 @@
 }
 .footer {
   height: 20px;
+  font-size: 14px;
   text-align: left;
+}
+
+@media screen and (width < 800px) {
+  .title {
+    font-size: 30px;
+  }
+}
+
+@media screen and (width < 576px) {
+  .title {
+    font-size: 20px;
+  }
+  .footer {
+    font-size: 10px;
+    text-align: center;
+  }  
 }
