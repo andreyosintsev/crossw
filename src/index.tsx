@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-import "./index.npm install sass --save-devscss";
+import "./index.scss";
 
 import App from "./components/app/app";
 
