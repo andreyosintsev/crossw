@@ -1,14 +1,17 @@
 # A Japanese crossword game (crossw.ru)
 
-This project was bootstrapped with [Create React App] and written in React.
+This project was bootstrapped with [Create React App] and written in React + TS + REDUX.
+Backend is on PHP+MySQL
 
 ## Updates history
 
-2024/09/02
+09 February 2024
+
 Project resumed
 - Started moving to TS + REDUX
 
-2023/24/06
+24 June 2023
+
 BOARD:
 - Hints for the current table are implemented. Now you can press "Hint" to fill one valid cell.
 
@@ -16,7 +19,8 @@ WEBSITE:
 - Some layout changes, the beginning of responsive layout.
 - Some design changes.
 
-2023/20/06
+20 June 2023
+
 PROJECT:
 - The project has been renamed to "Crossw" due to copyright restrictions.
 
@@ -24,7 +28,7 @@ WEBSITE:
 - A domain name "crossw.ru" was bought. 
 - First deploy.
 
-2023/19/06 
+19 June 2023
 
 TASK (current puzzle):
 - PHP-demo of API has been established. 
@@ -43,8 +47,8 @@ GAMEPLAY (user's experience)
 - User can successfully solve the game and get congratulations modal window.
 
 
-2023/18/06 README.md modified
+18 June 2023 README.md modified
 
-2023/17/06 A massive update of all aspects of the game
+17 June 2023 A massive update of all aspects of the game
 
-2023/08/05 Initial commit
+08 May 2023 Initial commit
