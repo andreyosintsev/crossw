@@ -48,11 +48,11 @@
 /*
     Рамки
 */
-    --border:                   var(--pink-offwhite):
-}
+    --border:                   var(--pink-offwhite);
+
 
 /*
     Меню
 */
---menu-item:                   var(--text-second):
+    --menu-item:                   var(--text-second);
 }
